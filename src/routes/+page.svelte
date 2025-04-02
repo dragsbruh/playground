@@ -4,6 +4,8 @@
 </script>
 
 <svelte:head>
+  <meta name="description" content="a playground for some stuff i like to do">
+
   <meta property="og:title" content="dragsbruh" />
   <meta
     property="og:description"
