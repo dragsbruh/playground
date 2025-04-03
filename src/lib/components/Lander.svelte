@@ -12,6 +12,7 @@
       class="bg-[#a298e4] text-black font-bold px-4 py-2 rounded-sm text-sm cursor-pointer"
       onclick={()=>{
         config.yay = true;
+        localStorage.setItem("config", JSON.stringify(config));
         location.reload();
       }}
       >click to enter</button
