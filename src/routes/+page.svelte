@@ -1,39 +1,46 @@
-<script>
-  import assets from "$lib/assets";
+<script lang="ts">
+  import Desktop from "$lib/desktop/Desktop.svelte";
   import MusicPlayer from "$lib/components/MusicPlayer.svelte";
+  import OpenGyat from "$lib/components/OpenGyat.svelte";
+  import Presence from "$lib/components/Presence.svelte";
+  import Profile from "$lib/components/Profile.svelte";
+  import Socials from "$lib/components/Socials.svelte";
+  import { configExists } from "$lib/config.svelte";
+  import Lander from "$lib/components/Lander.svelte";
+  import { LoaderPinwheel } from "@lucide/svelte";
+  import { onMount } from "svelte";
+  import { fade } from "svelte/transition";
+
+  let firstTime: boolean | null = $state(null);
+  onMount(() => {
+    firstTime = !configExists();
+  });
 </script>
 
-<svelte:head>
-  <meta name="description" content="a playground for some stuff i like to do">
+<OpenGyat />
 
-  <meta property="og:title" content="dragsbruh" />
-  <meta
-    property="og:description"
-    content="i do stuff"
-  />
-  <meta property="og:url" content="https://based.nya.pub" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="based" />
-
-  <meta
-    property="og:image"
-    content="https://based.nya.pub/avatar.webp"
-  />
-  <meta property="og:image:width" content="512" />
-  <meta property="og:image:height" content="512" />
-  <meta property="og:image:alt" content="i said i do some stuff" />
-</svelte:head>
-
-<MusicPlayer />
-
-<div
-  class="w-full h-full flex flex-col gap-4 justify-center items-center select-none cursor-pointer will-change-transform drop-shadow-[0_0_15px_#acf]"
->
-  <img
-    src={assets.avatar}
-    alt=""
-    class="w-32 aspect-square rounded-full"
-    loading="lazy"
-  />
-  <h1 class="text-4xl mb-6 text-center">work in progress</h1>
-</div>
+{#if firstTime === null}
+  <div class="w-full h-full flex justify-center items-center">
+    <LoaderPinwheel class="animate-spin" />
+  </div>
+{:else if firstTime}
+  <Lander />
+{:else}
+  <div class="flex w-full p-4 justify-center" in:fade>
+    <div
+      class="flex flex-col w-full md:max-w-3/4 gap-2 lg:max-w-none lg:grid lg:grid-cols-8"
+    >
+      <div class="flex flex-col gap-4 w-full lg:col-span-2">
+        <Profile />
+        <Socials />
+      </div>
+      <div class="lg:col-span-4 flex flex-col gap-4">
+        <Desktop />
+      </div>
+      <div class="lg:col-span-2 flex flex-col gap-4">
+        <Presence />
+        <MusicPlayer />
+      </div>
+    </div>
+  </div>
+{/if}
