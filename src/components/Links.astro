@@ -1,0 +1,31 @@
+---
+type Link = {
+    href: string;
+    label: string;
+};
+
+const links: Link[] = [
+    { href: "https://github.com/dragsbruh", label: "github" },
+    {
+        href: "https://bsky.app/profile/dragsbruh.bsky.social",
+        label: "bluesky",
+    },
+    { href: "https://discord.gg/W8sNRztW8f/", label: "discord" },
+];
+---
+
+<div class="flex justify-center gap-4 select-none">
+    {
+        links.map(({ href, label }) => {
+            return (
+                <a
+                    href={href}
+                    class="text-primary hover:text-primary-hover hover:scale-105 hover:underline transition-all"
+                    target="_blank"
+                >
+                    {label}
+                </a>
+            );
+        })
+    }
+</div>
