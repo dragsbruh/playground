@@ -8,10 +8,9 @@ import svelte from '@astrojs/svelte';
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
-    preview: {
-      allowedHosts: ['airobpzgvqadiuvxhmxvlqklja.srv.us']
-    }
   },
+
+  site: 'https://dragsbruh.github.io',
 
   integrations: [svelte()]
 });
