@@ -1,16 +1,53 @@
 ---
-import ProfileCard from "../components/ProfileCard.astro";
+import Navigation from "../components/Navigation.svelte";
+import Statusbar from "../components/Statusbar.svelte";
+import Profile from "../components/Profile.svelte";
 import Layout from "../layouts/Layout.astro";
-import Links from "../components/Links.astro";
+import About from "../components/About.mdx";
+import Gif from "../components/Gif.svelte";
+import Qt from "../components/Qt.svelte";
 ---
 
 <Layout>
-	<div class="flex flex-col gap-8 h-full">
-		<ProfileCard />
-		<Links />
+  <div class="flex h-screen bg-surface text-white">
+    <div class="flex flex-col flex-1">
+      <Statusbar client:load />
 
-		<div class="flex justify-center mt-64">
-			<h1 class="text-2xl text-muted">work in progress</h1>
-		</div>
-	</div>
+      <div class="w-full overflow-y-auto h-full">
+        <div class="flex flex-col md:flex-row h-full">
+          <!-- sidebar thing -->
+          <div class="flex flex-col justify-between min-w-85">
+            <div class="w-full flex justify-center p-4">
+              <div
+                class="w-full max-w-85 h-max bg-surface-alt border-border border-2"
+              >
+                <Profile client:idle />
+              </div>
+            </div>
+            <div class="flex w-full justify-center">
+              <div class="max-w-85 pb-4 hidden md:block">
+                <Gif client:idle />
+              </div>
+            </div>
+          </div>
+
+          <!-- content (middle) -->
+          <div class="flex-1 p-4 relative">
+            <div
+              class="xl:absolute xl:z-100 xl:top-0 xl:right-0"
+            >
+              <Navigation />
+            </div>
+            <div class="prose prose-invert">
+              <About />
+            </div>
+          </div>
+        </div>
+
+        <div class="hidden lg:block">
+          <Qt client:idle />
+        </div>
+      </div>
+    </div>
+  </div>
 </Layout>

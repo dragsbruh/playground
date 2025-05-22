@@ -1,17 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
 
-@theme  {
-  --color-surface: #0b0b0b;           /* Super dark gray */
-  --color-surface-alt: #121212;       /* Slightly lighter for sections */
-  --color-primary: #6aaa3d;      /* Forest lime */
-  --color-primary-hover: #7ecf4f;/* Brighter lime for hover */
-  --color-text: #e0e0e0;         /* Light gray text */
-  --color-muted: #999999;        /* Muted text or secondary info */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-surface: #141414;
+  --color-surface-alt: #1d1d1d;
+  --color-surface-alt-extra: #262626;
+  --color-dnd: #df7a9b;
+  --color-idle: #cbaa4b;
+  --color-online: #3bb693;
+  --color-offline: #808080;
+  --color-border: #262626;
+  --color-muted: #aaaaaa;
+  --color-link: #c195e2;
+  --color-activity-timestamp: #4fc6a2;
 }
 
 html,
 body {
-  @apply bg-surface text-text w-full h-full;
-  font-family: 'Inter', sans-serif;
+  @apply m-0 p-0 w-full h-full bg-surface text-white;
+  font-family: "DM Mono";
 }

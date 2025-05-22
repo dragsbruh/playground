@@ -1,3 +1,3 @@
-# hi there hello
+i use arch btw
 
-this is a work in progress
+
