@@ -2,6 +2,7 @@
 import Navigation from "../components/Navigation.svelte";
 import Statusbar from "../components/Statusbar.svelte";
 import Profile from "../components/Profile.svelte";
+import Banger from "../components/Banger.svelte";
 import Layout from "../layouts/Layout.astro";
 import About from "../components/About.mdx";
 import Gif from "../components/Gif.svelte";
@@ -36,10 +37,11 @@ import Qt from "../components/Qt.svelte";
             <div
               class="xl:absolute xl:z-100 xl:top-0 xl:right-0"
             >
-              <Navigation />
+              <Navigation client:load />
             </div>
             <div class="prose prose-invert">
               <About />
+              <Banger />
             </div>
           </div>
         </div>

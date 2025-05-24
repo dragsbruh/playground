@@ -1,27 +1,8 @@
 <script lang="ts">
+  import { onMount } from "svelte";
   import { discord_server } from "../stores/discord";
 
-  const links = [
-    {
-      title: "blog",
-      href: "/blog",
-      external: false,
-    },
-    {
-      title: "games",
-      href: "/games",
-      external: false,
-    },
-    // {
-    //   title: "tools",
-    //   href: "/tools",
-    //   external: false,
-    // },
-    // {
-    //   title: "projects",
-    //   href: "/projects",
-    //   external: false,
-    // },
+  const links = $state([
     {
       title: "github",
       href: "https://github.com/dragsbruh",
@@ -37,7 +18,20 @@
       href: discord_server,
       external: true,
     },
-  ];
+  ]);
+
+  onMount(() => {
+    const alt =
+      window.location.hostname === "based.nya.pub"
+        ? "based.is-a.dev"
+        : "based.nya.pub";
+
+    links.push({
+      title: alt,
+      href: `https://${alt}`,
+      external: false,
+    });
+  });
 </script>
 
 <div class="flex xl:flex-col xl:px-4 pb-4 xl:pb-0 gap-4 xl:gap-2 mt-4">
